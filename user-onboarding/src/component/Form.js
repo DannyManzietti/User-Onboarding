@@ -42,7 +42,6 @@ const UserForm = ({ errors, status, values, touched }) => {
           <Field type="checkbox" name="tos" checked={values.tos} />
           <span className="checkmark" />
         </label>
-        <br />
 
         <button className="button" type="submit">
           Click to Submit
@@ -72,14 +71,14 @@ const FormikLogin = withFormik({
 
   validationSchema: Yup.object().shape({
     fullname: Yup.string()
-      .required("Please enter your name.")
+      .required("Enter your name.")
       .min(1),
     email: Yup.string()
       .email()
-      .required("Please enter your email address."),
+      .required("Enter your email address."),
     password: Yup.string()
       .min(10)
-      .required("Please enter your password."),
+      .required("Enter your password."),
   }),
 
   handleSubmit(values, { setStatus }) {
@@ -88,12 +87,10 @@ const FormikLogin = withFormik({
       .then(response => {
         console.log(response);
         setStatus(response.data);
-        // setStatus(res.data)
       })
       .catch(err => {
         console.log(err.response);
       });
-    // console.log(values);
   },
 })(UserForm);
 
